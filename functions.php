@@ -32,3 +32,8 @@ function single_post_inner_wrap_after( $post_id, $attributes ) {
     echo '<div> I am at the end of the single post inner wrap. </div>'; 
 } 
 add_action( 'uagb_post_after_inner_wrap_grid', 'single_post_inner_wrap_after', 10, 2 );
+
+if(function_exists(‘rl_color’)){
+	$rl_category_color = rl_color($the_category_id);
+	}
+?>
