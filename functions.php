@@ -23,17 +23,9 @@ add_action( 'wp_enqueue_scripts', 'child_theme_configurator_css', 10 );
 
 // END ENQUEUE PARENT ACTION
 
-function single_post_inner_wrap_before( $post_id, $attributes ) {
-    echo '<div> I am at the beginning of the single post inner wrap. </div>'; 
-} 
-add_action( 'uagb_post_before_inner_wrap_grid', 'single_post_inner_wrap_before', 10, 2 );
+// add classes to posts to get access to categories for styling
 
-function single_post_inner_wrap_after( $post_id, $attributes ) {
-    echo '<div> I am at the end of the single post inner wrap. </div>'; 
-} 
-add_action( 'uagb_post_after_inner_wrap_grid', 'single_post_inner_wrap_after', 10, 2 );
-
-if(function_exists(‘rl_color’)){
-	$rl_category_color = rl_color($the_category_id);
-	}
-?>
+add_filter ( 'uagb_enable_post_class', 'het_uagb_enable_post_class' );
+function het_uagb_enable_post_class( $value ) {
+    return true;
+}
