@@ -22,3 +22,13 @@ endif;
 add_action( 'wp_enqueue_scripts', 'child_theme_configurator_css', 10 );
 
 // END ENQUEUE PARENT ACTION
+
+function single_post_inner_wrap_before( $post_id, $attributes ) {
+    echo '<div> I am at the beginning of the single post inner wrap. </div>'; 
+} 
+add_action( 'uagb_post_before_inner_wrap_grid', 'single_post_inner_wrap_before', 10, 2 );
+
+function single_post_inner_wrap_after( $post_id, $attributes ) {
+    echo '<div> I am at the end of the single post inner wrap. </div>'; 
+} 
+add_action( 'uagb_post_after_inner_wrap_grid', 'single_post_inner_wrap_after', 10, 2 );
