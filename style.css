@@ -7,7 +7,7 @@ Template: astra
 Author: KeDe Digital LLP
 Author URI: https://digital-bridge.de/
 Description: Child-Theme für Institut für Angewandte Heterotopie, basierend auf Astra
-Version: 1.0.6
+Version: 1.0.7
 
 */
 
@@ -60,4 +60,10 @@ Version: 1.0.6
 .wp-block-media-text .wp-block-media-text__media {
 	margin: 2em auto;
 	width: 50%;
+	}
+	
+/* Versalien in Mobile Menu */
+
+.versalien {
+	text-transform: uppercase;
 	}
