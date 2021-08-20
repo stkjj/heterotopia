@@ -62,8 +62,9 @@ Version: 1.0.9
 	width: 50%;
 	}
 	
-/* Versalien in Mobile Menu */
+/* Überschriften fett und ausgetrieben */
 
-.versalien {
-	text-transform: uppercase;
+.uagb-post__title {
+    font-weight: 800;
+    letter-spacing: 0.1em;
 	}
