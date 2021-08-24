@@ -9,6 +9,8 @@
  * @since       Astra 1.0.0
  */
 
+remove_action( 'astra_entry_top' );
+
 ?>
 
 <div <?php astra_blog_layout_class( 'single-layout-1' ); ?>>
@@ -17,11 +19,8 @@
 
 	<header class="entry-header <?php astra_entry_header_class(); ?>">
 
-		<div class="extra-extra">
 
 		<?php astra_single_header_top(); ?>
-		
-		</div>
 		
 		<?php astra_blog_post_thumbnail_and_title_order(); ?>
 
