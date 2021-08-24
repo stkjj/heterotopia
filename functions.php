@@ -29,3 +29,4 @@ add_filter ( 'uagb_enable_post_class', 'het_uagb_enable_post_class' );
 function het_uagb_enable_post_class( $value ) {
     return true;
 }
+
