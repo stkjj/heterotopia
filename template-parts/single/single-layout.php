@@ -9,53 +9,82 @@
  * @since       Astra 1.0.0
  */
 
-remove_action( 'astra_entry_top','astra_entry_content_before' );
+remove_action( 'astra_entry_after', 'astra_single_post_navigation_markup' );
 
 ?>
 
 <div <?php astra_blog_layout_class( 'single-layout-1' ); ?>>
 
-	<?php astra_single_header_before(); ?>
+    <?php astra_single_header_before(); ?>
 
-	<header class="entry-header <?php astra_entry_header_class(); ?>">
+    <header class="entry-header <?php astra_entry_header_class(); ?>">
 
+        <?php astra_single_header_top(); ?>
 
-		<?php astra_single_header_top(); ?>
-		
-		<?php astra_blog_post_thumbnail_and_title_order(); ?>
+        <?php //astra_blog_post_thumbnail_and_title_order();
+        //
+        //
 
-		<?php astra_single_header_bottom(); ?>
+        do_action( 'astra_blog_single_title_meta_before' );
+        astra_get_single_post_title_meta();
+        do_action( 'astra_blog_single_title_meta_after' );
+        ?>
 
-	</header><!-- .entry-header -->
+        <?php astra_single_header_bottom(); ?>
 
-	<?php astra_single_header_after(); ?>
+    </header><!-- .entry-header -->
 
-	<div class="entry-content clear" 
-	<?php
-				echo astra_attr(
-					'article-entry-content-single-layout',
-					array(
-						'class' => '',
-					)
-				);
-				?>
-	>
+    <?php astra_single_header_after(); ?>
 
-		<?php astra_entry_content_before(); ?>
+    <div class="entry-content clear"
+        <?php
+        echo astra_attr(
+            'article-entry-content-single-layout',
+            array(
+                'class' => '',
+            )
+        );
+        ?>
+    >
 
-		<?php the_content(); ?>
+        <?php astra_entry_content_before(); ?>
 
-		<?php
-			astra_edit_post_link(
-				sprintf(
-					/* translators: %s: Name of current post */
-					esc_html__( 'Edit %s', 'astra' ),
-					the_title( '<span class="screen-reader-text">"', '"</span>', false )
-				),
-				'<span class="edit-link">',
-				'</span>'
-			);
-			?>
+        <div class="branchen__single-page clear">
+			<div class="branchen__single-image-content">
+				<?php  the_post_thumbnail( ); ?>
+            </div>
+            <div class="branchen__single-title-wrap">
+				<h1 class="uagb-ifb-title"><?php echo get_the_title(); ?></h1>
+			</div>
+		</div>
+        <?php the_content(); ?>
+
+        <?php
+        astra_edit_post_link(
+            sprintf(
+            /* translators: %s: Name of current post */
+                esc_html__( 'Edit %s', 'astra' ),
+                the_title( '<span class="screen-reader-text">"', '"</span>', false )
+            ),
+            '<span class="edit-link">',
+            '</span>'
+        );
+        ?>
+
+        <?php astra_entry_content_after(); ?>
+
+        <?php
+        wp_link_pages(
+            array(
+                'before'      => '<div class="page-links">' . esc_html( astra_default_strings( 'string-single-page-links-before', false ) ),
+                'after'       => '</div>',
+                'link_before' => '<span class="page-link">',
+                'link_after'  => '</span>',
+            )
+        );
+        ?>
+    </div><!-- .entry-content .clear -->
+</div><!-- .single-layout-1 .clear -->
 
 		<?php astra_entry_content_after(); ?>
 
