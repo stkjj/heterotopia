@@ -19,7 +19,7 @@
 
 		<?php astra_single_header_top(); ?>
 		
-		<?php 
+		<?php astra_blog_post_thumbnail_and_title_order();
 		
 	add_action('astra_single_post_title_after', 'callback_function');
 
