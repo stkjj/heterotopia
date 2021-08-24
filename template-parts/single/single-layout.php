@@ -9,7 +9,7 @@
  * @since       Astra 1.0.0
  */
 
-remove_action( 'astra_entry_top' );
+remove_action( 'astra_entry_top','astra_entry_content_before' );
 
 ?>
 
