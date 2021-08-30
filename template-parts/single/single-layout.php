@@ -35,7 +35,7 @@
 					$output_str = astra_get_post_meta( $post_meta );
 					
 					if ( ! empty( $output_str ) ) {
-						echo apply_filters( 'astra_blog_post_meta', '<div class="entry-meta">' . $output_str . '</div>', $output_str ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						echo apply_filters( 'astra_blog_post_meta', '<div class="entry-meta het-test"><span class="extra">' . $output_str . '</span></div>', $output_str ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					}
 				}
 
