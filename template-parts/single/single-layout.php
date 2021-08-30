@@ -14,6 +14,7 @@
 <div <?php astra_blog_layout_class( 'single-layout-1' ); ?>>
 
 	<?php astra_single_header_before(); ?>
+	<h2>This is the single post layout of this child theme</h2>
 
 	<header class="entry-header <?php astra_entry_header_class(); ?>">
 
