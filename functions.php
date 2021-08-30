@@ -30,3 +30,20 @@ function het_uagb_enable_post_class( $value ) {
     return true;
 }
 
+// change default colors for palette
+
+function het_astra_color_palettes() {
+
+  $color_palettes = array(
+ '#ffffff',
+ '#e6ffff',
+ '#ffe6ff',
+ '#ffffe6',
+ '#e6e6e6',
+ '#000000',
+  );
+  
+  return $color_palettes;
+}
+
+add_filter( 'astra_color_palettes', 'het_astra_color_palettes' );
