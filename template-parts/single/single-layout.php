@@ -14,19 +14,23 @@
 <div <?php astra_blog_layout_class( 'single-layout-1' ); ?>>
 
 	<?php astra_single_header_before(); ?>
+<!-- 
 	<pre>This is the single post layout of this child theme</pre>
+ -->
 
 	<header class="entry-header <?php astra_entry_header_class(); ?>">
 
 		<?php astra_single_header_top();
 
-// Add content to astra_header_before()
-	
-		add_action( 'astra_single_header_top', 'add_content_single_header_top' );
-		function add_content_single_header_top() { ?>
-	      <!-- Your HTML goes here -->
-	      <pre>This is my own header</pre>
-		<?php }		
+// // Add content to astra_header_before()
+// 	
+// 		add_action( 'astra_single_header_top', 'add_content_single_header_top' );
+// 		function add_content_single_header_top() { ?>
+<!-- // 	      <!~~ Your HTML goes here ~~> -->
+<!-- 
+// 	      <pre>This is my own header</pre>
+ -->
+<!-- // 		<?php }		 -->
  
  ?>
 		<?php astra_blog_post_thumbnail_and_title_order(); ?>			
