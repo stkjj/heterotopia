@@ -20,29 +20,11 @@
 
 		<?php astra_single_header_top(); ?>
 		
-		<?php astra_blog_post_thumbnail_and_title_order();
+		<?php astra_blog_post_thumbnail_and_title_order(); ?>
 		
-	add_action('astra_single_post_title_after', 'callback_function');
-
-		function callback_function(){
-			if ( 'post' !== get_post_type() ){
-
-				$enable_meta = apply_filters( 'astra_blog_post_meta_enabled', '__return_true' );
-				$post_meta   = astra_get_option( 'blog-meta' );
-		var_dump ($post_meta);
-				if ( is_array( $post_meta ) && $enable_meta ) {
+		<?php astra_entry_top(); ?>
 		
-					$output_str = astra_get_post_meta( $post_meta );
-					
-					if ( ! empty( $output_str ) ) {
-						echo apply_filters( 'astra_blog_post_meta', '<div class="entry-meta het-test"><span class="extra">' . $output_str . '</span></div>', $output_str ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-					}
-				}
-
-			}
-		}
-		        
-        ?>
+		<?php var_dump(); ?>
 
 		<?php astra_single_header_bottom(); ?>
 
