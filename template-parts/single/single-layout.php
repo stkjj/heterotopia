@@ -29,7 +29,7 @@
 
 				$enable_meta = apply_filters( 'astra_blog_post_meta_enabled', '__return_true' );
 				$post_meta   = astra_get_option( 'blog-meta' );
-		var_dump $post_meta;
+		var_dump ($post_meta);
 				if ( is_array( $post_meta ) && $enable_meta ) {
 		
 					$output_str = astra_get_post_meta( $post_meta );
