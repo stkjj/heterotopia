@@ -18,12 +18,17 @@
 
 	<header class="entry-header <?php astra_entry_header_class(); ?>">
 
-		<?php astra_single_header_top(); ?>
+		<?php astra_single_header_top();
 
-		<pre>Here's the entry_top</pre>
-		
-		<?php var_dump ( astra_single_header_top() ); ?>
-		
+// Add content to astra_header_before()
+	
+		add_action( 'astra_single_header_top', 'add_content_single_header_top' );
+		function add_content_single_header_top() { ?>
+	      <!-- Your HTML goes here -->
+	      <pre>This is my own header</pre>
+		<?php }		
+ 
+ ?>
 		<?php astra_blog_post_thumbnail_and_title_order(); ?>			
 
 		<?php astra_single_header_bottom(); ?>
