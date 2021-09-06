@@ -47,3 +47,26 @@ function het_astra_color_palettes() {
 }
 
 add_filter( 'astra_color_palettes', 'het_astra_color_palettes' );
+
+
+add_filter( 'astra_single_post_meta', 'het_astra_single_post_meta');
+function het_astra_single_post_meta( $dummy ) {
+    $output_str = '';
+    $separator = '.';
+    $loop_count = 2;
+    $author = get_the_author();
+    if ( ! empty( $author ) ) {
+        $output_str .= ( 1 != $loop_count && '' != $output_str ) ? ' ' . $separator . ' ' : '';
+        $output_str .=  "<span class=\"dashicons-admin-users dashicons\"></span>".  astra_post_author();
+    }
+
+    $output_str .= ( 1 != $loop_count && '' != $output_str ) ? ' ' . $separator . ' ' : '';
+    $output_str .= "<span class=\"dashicons-calendar dashicons\"></span>" . astra_post_date();
+
+    $category = astra_post_categories();
+    if ( '' != $category ) {
+        $output_str .= ( 1 != $loop_count && '' != $output_str ) ? ' ' . $separator . ' ' : '';
+        $output_str .= "<span class=\"dashicons-tag dashicons\"></span>" . $category;
+    }
+    return $output_str;
+}
