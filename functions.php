@@ -69,7 +69,7 @@ function het_astra_single_post_meta( $dummy ) {
         $output_str .= ( 1 != $loop_count && '' != $output_str ) ? ' ' . $separator . ' ' : '';
         $output_str .= "<span class=\"dashicons-tag dashicons\"></span>" . $category;
     }
-    $output_str .= "</div>"
+    $output_str .= "</div>";
     return $output_str;
 }
 
