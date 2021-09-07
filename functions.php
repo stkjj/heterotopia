@@ -70,3 +70,4 @@ function het_astra_single_post_meta( $dummy ) {
     }
     return $output_str;
 }
+
