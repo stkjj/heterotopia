@@ -47,15 +47,15 @@ add_filter( 'astra_single_post_meta', function( $dummy ) {
 });
 
 // Optimize script loading for Contact Form 7
-add_action( 'wp_enqueue_scripts', function() {
-    if ( is_singular() ) {
-        $post = get_post();
-        if ( has_shortcode( $post->post_content ?? '', 'contact-form-7' ) ) {
-            return;
-        }
-    }
-
-    wp_dequeue_script( 'contact-form-7' );
-    wp_dequeue_script( 'google-recaptcha' );
-    wp_dequeue_style( 'contact-form-7' );
-}, 99 );
+// add_action( 'wp_enqueue_scripts', function() {
+//     if ( is_singular() ) {
+//         $post = get_post();
+//         if ( has_shortcode( $post->post_content ?? '', 'contact-form-7' ) ) {
+//             return;
+//         }
+//     }
+// 
+//     wp_dequeue_script( 'contact-form-7' );
+//     wp_dequeue_script( 'google-recaptcha' );
+//     wp_dequeue_style( 'contact-form-7' );
+// }, 99 );
