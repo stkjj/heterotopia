@@ -1,162 +1,123 @@
 /*
 Theme Name: Heterotopia
 Theme URI: https://digital-bridge.de/
-GitHub Theme URI: stkjj/heterotopia
 GitHub Theme URI: https://github.com/stkjj/heterotopia
 Template: astra
 Author: KeDe Digital LLP
 Author URI: https://digital-bridge.de/
 Description: Child-Theme für Institut für Angewandte Heterotopie, basierend auf Astra
-Version: 1.5.9
-
+Version: 1.6.0
 */
 
-/* Farbmodell */
-
+/* Custom Styles */
 .wp-block-button .wp-block-button__link {
-	color: #000000;
-	}
-	
-/* 
-.category-praxis .uagb-post__inner-wrap,
-.category-practice .uagb-post__inner-wrap {
-	background: #E6ffff;
-	}
+    color: #000000;
+}
 
-.category-theorie .uagb-post__inner-wrap,
-.category-theory .uagb-post__inner-wrap {
-	background: #ffE6ff;
-	}
-
-.category-karte .uagb-post__inner-wrap,
-.category-map .uagb-post__inner-wrap {
-	background: #ffffE6;
-	}
-
-.category-konferenz .uagb-post__inner-wrap,
-.category-conference .uagb-post__inner-wrap {
-	background: #E6E6E6;
-	color: #ffffff;
-	}
- */
-
-.category-konferenz  .uagb-post__title,
+.category-konferenz .uagb-post__title,
 .category-conference .uagb-post__title {
-	color: #ffffff;
-	}
+    color: #ffffff;
+}
 
 .category-konferenz .wp-block-button .wp-block-button__link,
 .category-conference .wp-block-button .wp-block-button__link {
-	color: #ffffff;
-	border-color: #ffffff;
-	}
-	
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
 .uagb-post__inner-wrap {
-	margin: 30px 0;
-	border-bottom: 3px solid #e6e6e6;
-	background: none;
-	}
+    margin: 30px 0;
+    border-bottom: 3px solid #e6e6e6;
+    background: none;
+}
 
 /* Excerpt in Beitragsvorschau linksbündig */
-
 .uagb-post__excerpt {
-	text-align: left;
-	}
-	
+    text-align: left;
+}
+
 /* Team Bilder 50 % */
-
 .wp-block-media-text .wp-block-media-text__media {
-	margin: 2em auto;
-	width: 50%;
-	}
-	
-/* Überschriften fett und ausgetrieben */
+    margin: 2em auto;
+    width: 50%;
+}
 
+/* Überschriften fett und ausgetrieben */
 .uagb-post__title {
     font-weight: 800;
     letter-spacing: 0.1em;
-	}
-	
+}
+
 /* Beitragsüberschrift und Meta zentriert */
-
 .ast-single-post-order {
-	text-align: center;
-	}
+    text-align: center;
+}
 
-/* Trenner von Metas raus */
-
-.uagb-post-grid .uagb-post__author:not(:last-child)::after, 
-.uagb-post-grid .uagb-post__date:not(:last-child)::after, 
+/* Entferne Trenner von Metas */
+.uagb-post-grid .uagb-post__author:not(:last-child)::after,
+.uagb-post-grid .uagb-post__date:not(:last-child)::after,
 .uagb-post-grid .uagb-post__comment:not(:last-child)::after {
-	display: none;
-	}
-
+    display: none;
+}
 
 /* IntroText auf Eingangsseite */
-
 .introtext {
-	font-weight: 300;
+    font-weight: 300;
     max-width: 85%;
-/* 
-    letter-spacing: 1px;
- */
-    }
+}
 
+.introtext a {
+    color: #000000;
+    text-decoration: none;
+}
 
-.entry-content .introtext a {
-	color: #000000;
-	text-decoration: none;
-	}
-
-introtext a:hover {
+.introtext a:hover {
     text-decoration: none;
     font-style: italic;
 }
 
-/* Darstellung Meta in Einzeldarstellung an Übersichtsseite angepasst */
-
+/* Darstellung Meta in Einzelansicht */
 .entry-meta, .entry-meta * {
-	color: black;
+    color: black;
     text-transform: capitalize;
     font-size: 11px;
     letter-spacing: 1px;
     margin-bottom: 15px;
-	}
+}
 
 .post .entry-meta a {
-	color: black;
-	text-decoration: underline;
-	}
+    color: black;
+    text-decoration: underline;
+}
 
 .post .entry-meta .dashicons {
-	line-height: 1.3em;
-	font-size: 11px;
-	}
-	
+    line-height: 1.3em;
+    font-size: 11px;
+}
+
 h1.entry-title {
-	font-weight: 700;
-	}
-	
+    font-weight: 700;
+}
+
 /* Loginseite */
-
 .login a {
-	color: black;
-	font-weight: 700;
-	}
+    color: black;
+    font-weight: 700;
+}
 
-p#backtoblog, p#nav, div.privacy-policy-page-link { 	
-	background: #ffe6ff;
-	}
+p#backtoblog, p#nav, div.privacy-policy-page-link {
+    background: #ffe6ff;
+}
 
 #login h1 {
-	border: 10px solid #ffe6ff;
-	width: 100px;
-	height: 96px;
-	margin: 0 auto;
-	}
+    border: 10px solid #ffe6ff;
+    width: 100px;
+    height: 96px;
+    margin: 0 auto;
+}
 
-#loginform input[type = submit] {
-	background-color: #ffffe6;
-	border-color: #000000;
-	color: #000000;
-	}
+#loginform input[type="submit"] {
+    background-color: #ffffe6;
+    border-color: #000000;
+    color: #000000;
+}

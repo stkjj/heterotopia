@@ -2,95 +2,60 @@
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
-// BEGIN ENQUEUE PARENT ACTION
-// AUTO GENERATED - Do not modify or remove comment markers above or below:
+// Enqueue Parent and Child Theme Styles
+add_action( 'wp_enqueue_scripts', function() {
+    wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
+    wp_enqueue_style( 'child-style', get_stylesheet_uri(), array( 'parent-style' ) );
+});
 
-if ( !function_exists( 'chld_thm_cfg_locale_css' ) ):
-    function chld_thm_cfg_locale_css( $uri ){
-        if ( empty( $uri ) && is_rtl() && file_exists( get_template_directory() . '/rtl.css' ) )
-            $uri = get_template_directory_uri() . '/rtl.css';
-        return $uri;
-    }
-endif;
-add_filter( 'locale_stylesheet_uri', 'chld_thm_cfg_locale_css' );
-         
-if ( !function_exists( 'child_theme_configurator_css' ) ):
-    function child_theme_configurator_css() {
-        wp_enqueue_style( 'chld_thm_cfg_child', trailingslashit( get_stylesheet_directory_uri() ) . 'style.css', array( 'astra-theme-css' ) );
-    }
-endif;
-add_action( 'wp_enqueue_scripts', 'child_theme_configurator_css', 10 );
-
-// END ENQUEUE PARENT ACTION
-
-// add classes to posts to get access to categories for styling
-
-add_filter ( 'uagb_enable_post_class', 'het_uagb_enable_post_class' );
-function het_uagb_enable_post_class( $value ) {
+// Add classes to posts to access categories for styling
+add_filter( 'uagb_enable_post_class', function( $value ) {
     return true;
-}
+});
 
-// change default colors for palette
+// Modify default color palettes
+add_filter( 'astra_color_palettes', function() {
+    return array(
+        '#ffffff',
+        '#e6ffff',
+        '#ffe6ff',
+        '#ffffe6',
+        '#e6e6e6',
+        '#000000',
+    );
+});
 
-function het_astra_color_palettes() {
-
-  $color_palettes = array(
- '#ffffff',
- '#e6ffff',
- '#ffe6ff',
- '#ffffe6',
- '#e6e6e6',
- '#000000',
-  );
-  
-  return $color_palettes;
-}
-
-add_filter( 'astra_color_palettes', 'het_astra_color_palettes' );
-
-
-add_filter( 'astra_single_post_meta', 'het_astra_single_post_meta');
-function het_astra_single_post_meta( $dummy ) {
-    $output_str = '';
-    $separator = '  .  ';
-    $loop_count = 2;
+// Customize single post meta output
+add_filter( 'astra_single_post_meta', function( $dummy ) {
+    $output_str = '<div class="entry-meta">';
+    $separator = ' . ';
     $author = get_the_author();
-    $output_str = "<div class=\"entry-meta\">";
+
     if ( ! empty( $author ) ) {
-        $output_str .= ( 1 != $loop_count && '' != $output_str ) ? ' ' : '';
-        $output_str .=  "<span class=\"dashicons-admin-users dashicons\"></span>".  astra_post_author();
+        $output_str .= '<span class="dashicons dashicons-admin-users"></span> ' . astra_post_author();
     }
 
-    $output_str .= ( 1 != $loop_count && '' != $output_str ) ? ' ' . $separator . ' ' : '';
-    $output_str .= "<span class=\"dashicons-calendar dashicons\"></span>" . astra_post_date();
+    $output_str .= $separator . '<span class="dashicons dashicons-calendar"></span> ' . astra_post_date();
 
     $category = astra_post_categories();
-    if ( '' != $category ) {
-        $output_str .= ( 1 != $loop_count && '' != $output_str ) ? ' ' . $separator . ' ' : '';
-        $output_str .= "<span class=\"dashicons-tag dashicons\"></span>" . $category;
+    if ( ! empty( $category ) ) {
+        $output_str .= $separator . '<span class="dashicons dashicons-tag"></span> ' . $category;
     }
-    $output_str .= "</div>";
+
+    $output_str .= '</div>';
     return $output_str;
-}
+});
 
-// Load CF stuff only where needed //
-
-function contactform_dequeue_scripts() {
-    $load_scripts = false;
-
-    if( is_singular() ) {
+// Optimize script loading for Contact Form 7
+add_action( 'wp_enqueue_scripts', function() {
+    if ( is_singular() ) {
         $post = get_post();
-
-        if( has_shortcode($post->post_content, 'contact-form-7') ) {
-            $load_scripts = true;
-            
+        if ( has_shortcode( $post->post_content ?? '', 'contact-form-7' ) ) {
+            return;
         }
     }
 
-    if( ! $load_scripts ) {
-        wp_dequeue_script( 'contact-form-7' );
-        wp_dequeue_script('google-recaptcha');
-        wp_dequeue_style( 'contact-form-7' );
-    }
-}
-add_action( 'wp_enqueue_scripts', 'contactform_dequeue_scripts', 99 );
+    wp_dequeue_script( 'contact-form-7' );
+    wp_dequeue_script( 'google-recaptcha' );
+    wp_dequeue_style( 'contact-form-7' );
+}, 99 );
